@@ -114,6 +114,7 @@ npm run check
 - The database design uses tenant-scoped records with RLS.
 - Blockchain proofs store hashes only, not private client data.
 - AI routes should use validation, rate limits, logging, and cost controls before production launch.
+- Baseline HTTP security headers are configured in `next.config.ts`.
 - See [SECURITY.md](SECURITY.md) and [docs/SECURITY_MODEL.md](docs/SECURITY_MODEL.md).
 
 ## Engineering Highlights
@@ -124,6 +125,10 @@ npm run check
 - Blockchain used narrowly for auditability instead of unnecessary complexity
 - Public docs include PRD, architecture, roadmap, database design, and prompt workflow
 - CI, tests, issue templates, PR template, license, and contribution guide included from the first commit
+- Feature services keep AI summaries and proof generation testable outside route handlers
+- Deterministic proof hashing prevents inconsistent audit hashes from reordered payload fields
+- Framework-level security headers are enabled by default
+- Unit and end-to-end tests run as separate quality gates for clearer CI feedback
 
 ## Demo And Screenshots
 
