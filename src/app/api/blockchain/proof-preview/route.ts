@@ -1,16 +1,8 @@
-import { createHash } from "node:crypto";
-import { z } from "zod";
-
-const proofSchema = z.object({
-  recordType: z.enum(["client", "invoice", "document", "activity"]),
-  organizationId: z.string().uuid(),
-  recordId: z.string().min(6),
-  contentDigest: z.string().min(12),
-});
+import { createProofPreview, proofPreviewSchema } from "@/features/proofs/proof-preview";
 
 export async function POST(request: Request) {
   const payload = await request.json().catch(() => null);
-  const parsed = proofSchema.safeParse(payload);
+  const parsed = proofPreviewSchema.safeParse(payload);
 
   if (!parsed.success) {
     return Response.json(
@@ -19,12 +11,11 @@ export async function POST(request: Request) {
     );
   }
 
-  const canonicalPayload = JSON.stringify(parsed.data);
-  const proofHash = createHash("sha256").update(canonicalPayload).digest("hex");
+  const proofPreview = createProofPreview(parsed.data);
 
   return Response.json({
-    proofHash,
-    networkStatus: "preview-only",
-    message: "This hash is ready for a future on-chain proof registry transaction.",
+    proofHash: proofPreview.proofHash,
+    networkStatus: proofPreview.networkStatus,
+    message: proofPreview.message,
   });
 }

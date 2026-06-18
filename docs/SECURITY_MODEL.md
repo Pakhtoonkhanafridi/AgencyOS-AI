@@ -21,6 +21,8 @@ Client data is private by default. AI outputs must be treated as derived custome
 - [ ] Add server-side authorization checks
 - [ ] Add request validation to all API routes
 - [ ] Add rate limiting to AI routes
+- [x] Add baseline HTTP security headers
+- [x] Keep AI and proof logic in testable server-side modules
 - [ ] Verify Stripe webhook signatures
 - [ ] Rotate keys before launch
 - [ ] Add dependency scanning
