@@ -14,6 +14,7 @@ import { Sidebar } from "@/components/dashboard/sidebar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { sampleDeals } from "@/features/crm/sample-data";
+import { formatCompactCurrency, formatCurrency } from "@/lib/formatters";
 import { calculateAgencyHealth, calculateWeightedPipeline } from "@/lib/kpis";
 
 export default function Home() {
@@ -58,13 +59,13 @@ export default function Home() {
           <MetricCard
             icon={ChartNoAxesCombined}
             label="Weighted pipeline"
-            value={`$${weightedPipeline.toLocaleString()}`}
+            value={formatCurrency(weightedPipeline)}
             trend="+18% this month"
           />
           <MetricCard
             icon={CircleDollarSign}
             label="Monthly revenue"
-            value="$18.4k"
+            value={formatCompactCurrency(18400)}
             trend="3 invoices pending"
           />
           <MetricCard icon={Activity} label="Agency health" value={`${health}/100`} trend="Good" />

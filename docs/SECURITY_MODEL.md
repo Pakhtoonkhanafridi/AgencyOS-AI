@@ -20,7 +20,7 @@ Client data is private by default. AI outputs must be treated as derived custome
 - [ ] Enable Supabase RLS on all tenant-owned tables
 - [ ] Add server-side authorization checks
 - [ ] Add request validation to all API routes
-- [ ] Add rate limiting to AI routes
+- [x] Add baseline rate limiting to AI routes
 - [x] Add baseline HTTP security headers
 - [x] Keep AI and proof logic in testable server-side modules
 - [ ] Verify Stripe webhook signatures

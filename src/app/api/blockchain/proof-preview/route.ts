@@ -1,19 +1,17 @@
 import { createProofPreview, proofPreviewSchema } from "@/features/proofs/proof-preview";
+import { okJson, readJsonBody, validationErrorJson } from "@/lib/api/responses";
 
 export async function POST(request: Request) {
-  const payload = await request.json().catch(() => null);
+  const payload = await readJsonBody(request);
   const parsed = proofPreviewSchema.safeParse(payload);
 
   if (!parsed.success) {
-    return Response.json(
-      { error: "Invalid proof payload", details: parsed.error.flatten() },
-      { status: 400 },
-    );
+    return validationErrorJson("Invalid proof payload", parsed.error.flatten());
   }
 
   const proofPreview = createProofPreview(parsed.data);
 
-  return Response.json({
+  return okJson({
     proofHash: proofPreview.proofHash,
     networkStatus: proofPreview.networkStatus,
     message: proofPreview.message,

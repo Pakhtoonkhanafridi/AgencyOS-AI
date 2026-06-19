@@ -34,6 +34,10 @@ sequenceDiagram
   W-->>U: Render summary and next actions
 ```
 
+## Server Boundary Pattern
+
+Route handlers stay thin. They parse requests, apply shared API response helpers, enforce lightweight abuse protection, and delegate domain behavior to feature services. This keeps AI summaries, proof previews, health checks, and CRM calculations independently testable while preserving a simple Next.js deployment model.
+
 ## Tenant Model
 
 Every business record belongs to an organization. Users access data through organization memberships. Database policies must enforce `organization_id` boundaries.

@@ -104,7 +104,7 @@ npm run check
 
 | Endpoint | Purpose |
 | --- | --- |
-| `GET /api/health` | Runtime health snapshot |
+| `GET /api/health` | Runtime health and dependency readiness snapshot |
 | `POST /api/ai/client-summary` | Generates a structured AI client summary |
 | `POST /api/blockchain/proof-preview` | Creates a local SHA-256 proof preview before on-chain submission |
 
@@ -113,7 +113,7 @@ npm run check
 - Service role keys must remain server-side only.
 - The database design uses tenant-scoped records with RLS.
 - Blockchain proofs store hashes only, not private client data.
-- AI routes should use validation, rate limits, logging, and cost controls before production launch.
+- AI routes use validation and baseline request throttling; persistent rate limits and cost controls should be added before production launch.
 - Baseline HTTP security headers are configured in `next.config.ts`.
 - See [SECURITY.md](SECURITY.md) and [docs/SECURITY_MODEL.md](docs/SECURITY_MODEL.md).
 
@@ -129,6 +129,9 @@ npm run check
 - Deterministic proof hashing prevents inconsistent audit hashes from reordered payload fields
 - Framework-level security headers are enabled by default
 - Unit and end-to-end tests run as separate quality gates for clearer CI feedback
+- API routes share consistent JSON responses and no-store cache headers
+- Health checks expose dependency readiness without leaking secrets
+- Dashboard metrics use reusable formatters and precomputed pipeline summaries
 
 ## Demo And Screenshots
 

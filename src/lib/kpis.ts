@@ -18,7 +18,10 @@ type AgencyHealthInput = {
 
 export function calculateWeightedPipeline(deals: Deal[]) {
   return Math.round(
-    deals.reduce((total, deal) => total + deal.value * (deal.probability / 100), 0),
+    deals.reduce(
+      (total, deal) => total + safePositiveNumber(deal.value) * (clamp(deal.probability, 0, 100) / 100),
+      0,
+    ),
   );
 }
 
@@ -28,10 +31,18 @@ export function calculateAgencyHealth({
   monthlyRevenue,
   churnRiskClients,
 }: AgencyHealthInput) {
-  const revenueScore = Math.min(monthlyRevenue / 250, 35);
-  const clientScore = Math.min(activeClients * 1.2, 30);
-  const taskPenalty = Math.min(overdueTasks * 3, 20);
-  const churnPenalty = Math.min(churnRiskClients * 5, 25);
+  const revenueScore = Math.min(safePositiveNumber(monthlyRevenue) / 250, 35);
+  const clientScore = Math.min(safePositiveNumber(activeClients) * 1.2, 30);
+  const taskPenalty = Math.min(safePositiveNumber(overdueTasks) * 3, 20);
+  const churnPenalty = Math.min(safePositiveNumber(churnRiskClients) * 5, 25);
 
-  return Math.max(0, Math.min(100, Math.round(45 + revenueScore + clientScore - taskPenalty - churnPenalty)));
+  return clamp(Math.round(45 + revenueScore + clientScore - taskPenalty - churnPenalty), 0, 100);
+}
+
+function safePositiveNumber(value: number) {
+  return Number.isFinite(value) ? Math.max(0, value) : 0;
+}
+
+function clamp(value: number, minimum: number, maximum: number) {
+  return Math.min(maximum, Math.max(minimum, value));
 }
