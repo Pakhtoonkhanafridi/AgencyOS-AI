@@ -149,6 +149,10 @@ Planned screenshots:
 
 The detailed 12-month plan is in [docs/ROADMAP.md](docs/ROADMAP.md).
 
+For the full product strategy, market positioning, PRD, 12-month roadmap, and daily contribution system, see [docs/MASTER_PRD_AND_12_MONTH_ROADMAP.md](docs/MASTER_PRD_AND_12_MONTH_ROADMAP.md).
+
+Daily build notes are tracked in [docs/DAILY_BUILD_LOG.md](docs/DAILY_BUILD_LOG.md).
+
 ## Suggested GitHub Description
 
 AI-native CRM SaaS for service agencies with workflow automation, analytics, billing, and blockchain audit proofs.

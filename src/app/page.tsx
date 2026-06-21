@@ -1,6 +1,5 @@
 import {
   Activity,
-  BadgeCheck,
   Bot,
   ChartNoAxesCombined,
   CircleDollarSign,
@@ -10,6 +9,7 @@ import {
 } from "lucide-react";
 import { MetricCard } from "@/components/dashboard/metric-card";
 import { PipelineBoard } from "@/components/dashboard/pipeline-board";
+import { ProjectReadinessPanel } from "@/components/dashboard/project-readiness-panel";
 import { Sidebar } from "@/components/dashboard/sidebar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -92,22 +92,7 @@ export default function Home() {
               </div>
             </Card>
 
-            <Card>
-              <div className="flex items-start gap-3">
-                <div className="rounded-md bg-amber-100 p-2 text-amber-800">
-                  <BadgeCheck size={20} aria-hidden />
-                </div>
-                <div>
-                  <h2 className="text-lg font-semibold text-slate-950">Senior proof signals</h2>
-                  <ul className="mt-3 space-y-2 text-sm text-slate-600">
-                    <li>Multi-tenant SaaS architecture documented from day one.</li>
-                    <li>AI routes are server-side, validated, and testable.</li>
-                    <li>Blockchain stores only privacy-safe proof hashes.</li>
-                    <li>CI, tests, docs, and security files are part of the first commit.</li>
-                  </ul>
-                </div>
-              </div>
-            </Card>
+            <ProjectReadinessPanel />
           </div>
         </div>
       </section>
