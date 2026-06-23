@@ -132,6 +132,7 @@ npm run check
 - API routes share consistent JSON responses and no-store cache headers
 - Health checks expose dependency readiness without leaking secrets
 - Dashboard metrics use reusable formatters and precomputed pipeline summaries
+- Market validation experiments are modeled as typed product data and surfaced in the dashboard
 
 ## Demo And Screenshots
 

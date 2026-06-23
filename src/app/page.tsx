@@ -8,6 +8,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { MetricCard } from "@/components/dashboard/metric-card";
+import { MarketValidationPanel } from "@/components/dashboard/market-validation-panel";
 import { PipelineBoard } from "@/components/dashboard/pipeline-board";
 import { ProjectReadinessPanel } from "@/components/dashboard/project-readiness-panel";
 import { Sidebar } from "@/components/dashboard/sidebar";
@@ -92,6 +93,7 @@ export default function Home() {
               </div>
             </Card>
 
+            <MarketValidationPanel />
             <ProjectReadinessPanel />
           </div>
         </div>
