@@ -1,5 +1,25 @@
 # Daily Build Log
 
+## 2026-06-23: API Button Wiring And Integration Status Pass
+
+### What Changed
+
+- Replaced static dashboard buttons with client-side actions that call the existing API routes.
+- Added a health-check action so Supabase, OpenAI, and proof-preview dependency status is visible from the UI.
+- Added reusable demo payloads for AI summary and proof-preview calls.
+- Added tests to keep demo action payloads valid against the API schemas.
+- Improved disabled button styling while requests are running.
+
+### Why It Matters
+
+- Recruiters can see that the dashboard is becoming an actual working product, not a static mockup.
+- Developers can verify the API contract directly from the app shell.
+- The market story improves because product demos can now show real AI/proof/integration behavior.
+
+### Current Integration Reality
+
+The AI and proof-preview API routes are wired to the UI. OpenAI only uses the live provider when `OPENAI_API_KEY` is configured; otherwise the route returns the safe local fallback. Supabase readiness is reported by `/api/health`, but full Supabase auth and tenant CRUD are still the next major build milestone.
+
 ## 2026-06-23: Market Validation And Founder Proof Pass
 
 ### What Changed

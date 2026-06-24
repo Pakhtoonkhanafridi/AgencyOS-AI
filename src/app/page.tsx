@@ -3,16 +3,14 @@ import {
   Bot,
   ChartNoAxesCombined,
   CircleDollarSign,
-  FileCheck2,
   ShieldCheck,
-  Sparkles,
 } from "lucide-react";
+import { DashboardActions } from "@/components/dashboard/dashboard-actions";
 import { MetricCard } from "@/components/dashboard/metric-card";
 import { MarketValidationPanel } from "@/components/dashboard/market-validation-panel";
 import { PipelineBoard } from "@/components/dashboard/pipeline-board";
 import { ProjectReadinessPanel } from "@/components/dashboard/project-readiness-panel";
 import { Sidebar } from "@/components/dashboard/sidebar";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { sampleDeals } from "@/features/crm/sample-data";
 import { formatCompactCurrency, formatCurrency } from "@/lib/formatters";
@@ -44,16 +42,7 @@ export default function Home() {
               tasks, AI summaries, and blockchain-backed audit proofs.
             </p>
           </div>
-          <div className="flex flex-wrap gap-2">
-            <Button>
-              <Sparkles size={16} aria-hidden />
-              Run AI summary
-            </Button>
-            <Button variant="secondary">
-              <FileCheck2 size={16} aria-hidden />
-              Create proof
-            </Button>
-          </div>
+          <DashboardActions />
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
