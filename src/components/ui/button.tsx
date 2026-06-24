@@ -10,7 +10,7 @@ export function Button({ children, className, variant = "primary", ...props }: B
   return (
     <button
       className={cn(
-        "inline-flex h-10 items-center justify-center gap-2 rounded-md px-4 text-sm font-semibold transition",
+        "inline-flex h-10 items-center justify-center gap-2 rounded-md px-4 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60",
         variant === "primary"
           ? "bg-slate-950 text-white hover:bg-slate-800"
           : "border border-slate-300 bg-white text-slate-800 hover:bg-slate-100",
